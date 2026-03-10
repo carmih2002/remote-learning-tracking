@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>יומן למידה יומי</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== SCREENS ===== -->
+
+  <!-- Screen 1: Name input -->
+  <div id="screen-name" class="screen active">
+    <div class="card">
+      <div class="logo-area">
+        <div class="logo-icon">📚</div>
+        <h1>יומן למידה יומי</h1>
+        <p class="subtitle">מה למדת היום?</p>
+      </div>
+      <form id="form-name" novalidate>
+        <div class="field">
+          <label for="input-name">שם מלא</label>
+          <input type="text" id="input-name" placeholder="הכנס את שמך הפרטי והמשפחה..." autocomplete="off" />
+          <span class="field-error" id="name-error"></span>
+        </div>
+        <button type="submit" class="btn-primary">← המשך</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Screen 2: Report input -->
+  <div id="screen-report" class="screen">
+    <div class="card">
+      <div class="logo-area">
+        <div class="logo-icon">✏️</div>
+        <h1>שלום, <span id="display-name"></span>!</h1>
+        <p class="subtitle">ספר מה עשית והספקת היום</p>
+      </div>
+      <form id="form-report" novalidate>
+        <div class="field">
+          <label for="input-report">הדיווח שלי להיום</label>
+          <textarea id="input-report" rows="6" placeholder="למשל: עשיתי את דפי העבודה בפרק 3, קראתי את הסיכום, פתרתי 10 תרגילים..."></textarea>
+          <span class="field-error" id="report-error"></span>
+        </div>
+        <button type="submit" class="btn-primary">שלח דיווח ✓</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Screen 3: Already submitted -->
+  <div id="screen-done" class="screen">
+    <div class="card center-card">
+      <div class="done-icon">✅</div>
+      <h2>הדיווח נשלח!</h2>
+      <p class="done-msg">שלחת את הדיווח שלך להיום.<br />תוכל לדווח שוב מחר.</p>
+      <div class="done-date" id="done-date"></div>
+    </div>
+  </div>
+
+  <!-- Screen 4: Name already used today -->
+  <div id="screen-taken" class="screen">
+    <div class="card center-card">
+      <div class="done-icon">🚫</div>
+      <h2>השם כבר נרשם היום</h2>
+      <p class="done-msg">הדיווח עבור שם זה כבר הוגש היום.<br />אם זו טעות, פנה למורה.</p>
+      <button class="btn-secondary" id="btn-back-to-name">חזור</button>
+    </div>
+  </div>
+
+  <!-- Screen 5: Loading -->
+  <div id="screen-loading" class="screen active">
+    <div class="card center-card">
+      <div class="spinner"></div>
+      <p class="done-msg">טוען...</p>
+    </div>
+  </div>
+
+  <!-- Teacher Panel (overlay) -->
+  <div id="teacher-overlay" class="overlay hidden">
+    <div class="teacher-panel">
+      <div class="panel-header">
+        <h2>🎓 לוח בקרה של המורה</h2>
+        <button class="close-btn" id="close-panel">✕</button>
+      </div>
+      <div class="panel-body">
+        <div class="date-picker-row">
+          <label for="date-picker">בחר תאריך:</label>
+          <input type="date" id="date-picker" />
+          <button class="btn-small" id="btn-load-date">הצג</button>
+        </div>
+        <div id="teacher-results">
+          <div class="empty-state">בחר תאריך כדי לראות דיווחים</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Password Modal -->
+  <div id="password-modal" class="modal hidden">
+    <div class="modal-box">
+      <h3>🔐 כניסת מורה</h3>
+      <p>הזן את הסיסמה כדי להמשיך</p>
+      <input type="password" id="password-input" placeholder="סיסמה..." />
+      <span class="field-error" id="password-error"></span>
+      <div class="modal-actions">
+        <button class="btn-primary" id="btn-confirm-password">כניסה</button>
+        <button class="btn-ghost" id="btn-cancel-password">ביטול</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Teacher Button (fixed) -->
+  <button id="teacher-btn" class="teacher-btn">
+    אני המורה הכי טוב בארץץץ!!!
+  </button>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
