@@ -39,6 +39,20 @@
       </div>
       <form id="form-report" novalidate>
         <div class="field">
+          <span class="zoom-label">הייתי בזום היום?</span>
+          <div class="zoom-options" role="radiogroup" aria-label="הייתי בזום היום">
+            <label class="zoom-option">
+              <input type="radio" name="zoom-status" value="yes" />
+              <span>וי</span>
+            </label>
+            <label class="zoom-option">
+              <input type="radio" name="zoom-status" value="no" />
+              <span>איקס</span>
+            </label>
+          </div>
+          <span class="field-error" id="zoom-error"></span>
+        </div>
+        <div class="field">
           <label for="input-report">הדיווח שלי להיום</label>
           <textarea id="input-report" rows="6" placeholder="למשל: למדתי 40 דפי גמרא, קראתי את הסיכום, למדתי את כל הרשים של פרשת וישתעממו.."></textarea>
           <span class="field-error" id="report-error"></span>

@@ -41,12 +41,13 @@ async function isNameSubmittedToday(name) {
   return list.some(r => r.name.trim().toLowerCase() === name.trim().toLowerCase());
 }
 
-async function submitReport(name, text) {
+async function submitReport(name, text, attendedZoom) {
   const today    = getTodayStr();
   const existing = await getReportsForDate(today);
   existing.push({
     name: name.trim(),
     text: text.trim(),
+    attendedZoom,
     time: new Date().toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' })
   });
   await setDoc(doc(db, 'reports', today), { entries: existing });
@@ -82,6 +83,7 @@ const nameInput     = document.getElementById('input-name');
 const nameError     = document.getElementById('name-error');
 const reportInput   = document.getElementById('input-report');
 const reportError   = document.getElementById('report-error');
+const zoomError     = document.getElementById('zoom-error');
 const displayName   = document.getElementById('display-name');
 const doneDateEl    = document.getElementById('done-date');
 
@@ -143,16 +145,23 @@ document.getElementById('form-name').addEventListener('submit', async function (
   displayName.textContent = name;
   reportInput.value = '';
   reportError.textContent = '';
+  zoomError.textContent = '';
+  document.querySelectorAll('input[name="zoom-status"]').forEach(input => {
+    input.checked = false;
+  });
   showScreen('report');
 });
 
 document.getElementById('form-report').addEventListener('submit', async function (e) {
   e.preventDefault();
   const text = reportInput.value.trim();
+  const zoomStatus = document.querySelector('input[name="zoom-status"]:checked');
 
   if (!text)           { reportError.textContent = 'נא למלא את הדיווח לפני השליחה'; return; }
   if (text.length < 5) { reportError.textContent = 'אנא כתוב דיווח מפורט יותר'; return; }
   reportError.textContent = '';
+  if (!zoomStatus)     { zoomError.textContent = 'נא לסמן אם היית בזום היום'; return; }
+  zoomError.textContent = '';
 
   const name = nameInput.value.trim();
   const btn  = this.querySelector('button[type="submit"]');
@@ -165,7 +174,7 @@ document.getElementById('form-report').addEventListener('submit', async function
     return;
   }
 
-  await submitReport(name, text);
+  await submitReport(name, text, zoomStatus.value === 'yes');
   doneDateEl.textContent = `תאריך: ${formatDateHebrew(getTodayStr())}`;
   showScreen('done');
 });
@@ -240,7 +249,10 @@ async function loadDateResults(dateStr) {
   const cardsHTML = reports.map((r, i) => `
     <div class="report-card" data-name="${escapeHtml(r.name.toLowerCase())}">
       <div class="report-card-header">
-        <div class="report-student-name">${escapeHtml(r.name)}</div>
+        <div>
+          <div class="report-student-name">${escapeHtml(r.name)}</div>
+          <div class="report-zoom-status">זום היום: ${getZoomStatusLabel(r.attendedZoom)}</div>
+        </div>
         <button class="btn-delete" data-date="${dateStr}" data-index="${i}">מחק ✕</button>
       </div>
       <div class="report-text">${escapeHtml(r.text)}</div>
@@ -271,6 +283,12 @@ function filterReports(query) {
   });
   const el = document.getElementById('visible-count');
   if (el) el.textContent = visible;
+}
+
+function getZoomStatusLabel(attendedZoom) {
+  if (attendedZoom === true) return 'וי';
+  if (attendedZoom === false) return 'איקס';
+  return 'לא סומן';
 }
 
 function escapeHtml(str) {
