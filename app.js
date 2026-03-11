@@ -286,8 +286,8 @@ function filterReports(query) {
 }
 
 function getZoomStatusLabel(attendedZoom) {
-  if (attendedZoom === true) return 'וי';
-  if (attendedZoom === false) return 'איקס';
+  if (attendedZoom === true) return '✅';
+  if (attendedZoom === false) return '❌';
   return 'לא סומן';
 }
 
