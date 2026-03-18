@@ -610,6 +610,180 @@ h2 {
   border: 1px dashed var(--border);
 }
 
+/* ===== UTILITY ===== */
+.hidden { display: none !important; }
+
+/* ===== TEACHER REPLY SECTION (done screen) ===== */
+.teacher-reply-section {
+  width: 100%;
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: right;
+  animation: fadeIn 0.3s ease;
+}
+
+.reply-badge {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #166534;
+  letter-spacing: 0.2px;
+}
+
+.teacher-reply-text {
+  font-size: 0.97rem;
+  color: #14532d;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.teacher-reply-time {
+  font-size: 0.78rem;
+  color: #4ade80;
+  font-weight: 600;
+}
+
+/* ===== TOAST NOTIFICATION ===== */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: #1a1d2e;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 0.93rem;
+  font-weight: 600;
+  font-family: inherit;
+  box-shadow: var(--shadow-lg);
+  z-index: 2000;
+  white-space: nowrap;
+  direction: rtl;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.toast.toast-show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.toast.toast-hide {
+  transform: translateX(-50%) translateY(80px);
+  opacity: 0;
+}
+
+/* ===== REPLY SECTION (teacher dashboard) ===== */
+.reply-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  margin-top: 4px;
+}
+
+.existing-reply {
+  font-size: 0.86rem;
+  color: #166534;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 8px;
+  padding: 8px 12px;
+  line-height: 1.5;
+}
+
+.reply-time-small {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+
+.reply-input-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reply-textarea {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--white);
+  resize: vertical;
+  min-height: 72px;
+  direction: rtl;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.reply-textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79,110,247,0.12);
+}
+
+.reply-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-send-reply {
+  padding: 6px 16px;
+  background: var(--success);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.btn-send-reply:hover  { background: #218838; }
+.btn-send-reply:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-cancel-reply {
+  padding: 6px 14px;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.btn-cancel-reply:hover { background: var(--bg); }
+
+.btn-add-reply {
+  align-self: flex-start;
+  padding: 5px 12px;
+  background: var(--primary-light);
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.btn-add-reply:hover { background: #dde2fd; }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 500px) {
   .card {

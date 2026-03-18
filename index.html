@@ -65,6 +65,12 @@
   <!-- Screen 3: Already submitted -->
   <div id="screen-done" class="screen">
     <div class="card center-card">
+      <!-- Teacher reply — shown when teacher has responded to this device's report -->
+      <div id="teacher-reply-section" class="teacher-reply-section hidden">
+        <div class="reply-badge">💬 המורה השיב לדיווח שלך</div>
+        <div id="teacher-reply-text" class="teacher-reply-text"></div>
+        <div id="teacher-reply-time" class="teacher-reply-time"></div>
+      </div>
       <div class="done-icon">✅</div>
       <h2>הדיווח נשלח!</h2>
       <p class="done-msg">שלחת את הדיווח שלך להיום.<br />תוכל לדווח שוב מחר.</p>
@@ -128,6 +134,9 @@
   <button id="teacher-btn" class="teacher-btn">
     אני המורה הכי טוב בארץץץ!!!
   </button>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast hidden"></div>
 
   <script type="module" src="app.js"></script>
 </body>
