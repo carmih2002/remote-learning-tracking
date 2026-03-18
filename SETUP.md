@@ -9,13 +9,15 @@
 
 **Public key:**
 ```
-BKvH68IGj17PMUt0LLeA1Bxu5ZGE3G1xshwCMrTlk2VIaZtL48pSg04Fzk9qlc7-GdnwoPhebSlgrHOl-3pXTTI
+BGxCtBrzIuY8ehqODAsmSNqe6Xlc8HDsKiYyK99x_VpolrlG7I7Hp_uliIVMl_uNAAXRK7vsTv6_IVaylcogsUk
 ```
 
 **Private key:**
 ```
-mU_kskcyZ4n6Hx8W613u9SCm1Whrr_5D0Iu3oJx1F8Q
+JBexjRCj62dlJOx3gOQHLRiWbr4dhkOL-f0JJCVlFd8
 ```
+
+> ✅ Key pair already registered in Firebase Console.
 
 ---
 

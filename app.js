@@ -14,7 +14,7 @@ const firebaseConfig = {
 
 // VAPID public key — matches the Web Push certificate registered in Firebase Console.
 // See SETUP.md for instructions on how to register this key.
-const VAPID_KEY = 'BKvH68IGj17PMUt0LLeA1Bxu5ZGE3G1xshwCMrTlk2VIaZtL48pSg04Fzk9qlc7-GdnwoPhebSlgrHOl-3pXTTI';
+const VAPID_KEY = 'BGxCtBrzIuY8ehqODAsmSNqe6Xlc8HDsKiYyK99x_VpolrlG7I7Hp_uliIVMl_uNAAXRK7vsTv6_IVaylcogsUk';
 
 const app = initializeApp(firebaseConfig);
 const db  = getFirestore(app);
