@@ -12,9 +12,9 @@ const firebaseConfig = {
   appId:             "1:665503380173:web:d5a224a8279096e072ef84"
 };
 
-// ⚠️  Replace with your VAPID key from:
-//     Firebase Console → Project Settings → Cloud Messaging → Web Push certificates
-const VAPID_KEY = 'YOUR_VAPID_KEY_HERE';
+// VAPID public key — matches the Web Push certificate registered in Firebase Console.
+// See SETUP.md for instructions on how to register this key.
+const VAPID_KEY = 'BKvH68IGj17PMUt0LLeA1Bxu5ZGE3G1xshwCMrTlk2VIaZtL48pSg04Fzk9qlc7-GdnwoPhebSlgrHOl-3pXTTI';
 
 const app = initializeApp(firebaseConfig);
 const db  = getFirestore(app);
